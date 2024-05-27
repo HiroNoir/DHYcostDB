@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>編集者一覧</title>
+    </head>
+    <body>
+        <h1>編集者一覧</h1>
+        <table>
+            <tr>
+                <th>社員番号</th>
+                <th>登録日時</th>
+                <th>更新日時</th>
+                <th>名前</th>
+                <th>パスワード</th>
+            </tr>
+            <tr th:each="user :${userlist}">
+                <td th:text="${user.euCode}"></td>
+                <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd hh:mm:ss')}"</td>
+                <td th:text="${#temporals.format(user.updatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.password}"></td>
+            </tr>
+        </table>
+    </body>
+</html>

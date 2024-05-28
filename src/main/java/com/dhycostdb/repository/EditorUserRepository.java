@@ -2,8 +2,8 @@ package com.dhycostdb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.dhycostdb.entity.EditorUsers;
+import com.dhycostdb.entity.EditorUser;
 
-public interface EditorUserRepository extends JpaRepository<EditorUsers, String> {
+public interface EditorUserRepository extends JpaRepository<EditorUser, String> {
 
 }

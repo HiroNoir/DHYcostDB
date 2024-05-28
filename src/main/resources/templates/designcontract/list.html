@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>設計契約一覧</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <!-- レイアウトを確認するためのスタイル追加　（不要になったらコメントアウト）
+        <style> * { outline: 1px solid #f00; }</style> -->
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center mb-5">設計契約一覧</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">dc_id</th>
+                        <th scope="col">最終編集者</th>
+                        <th scope="col">登録日時</th>
+                        <th scope="col">更新日時</th>
+                        <th scope="col">業務番号</th>
+                        <th scope="col">業務名称</th>
+                        <th scope="col">顧客名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="var :${list}">
+                        <td th:text="${var.dcId}"></td>
+                        <td th:text="${var.editorUser.name}"></td>
+                        <td th:text="${#temporals.format(var.dcCreatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
+                        <td th:text="${#temporals.format(var.dcUpdatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
+                        <td th:text="${var.contractNumber}"></td>
+                        <td th:text="${var.contractName}"></td>
+                        <td th:text="${var.customerName}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script defer th:src="@{/js/bootstrap.min.js}"></script>
+    </body>
+</html>

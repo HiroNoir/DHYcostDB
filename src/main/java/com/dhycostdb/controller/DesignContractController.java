@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dhycostdb.entity.EditorUser;
-import com.dhycostdb.service.EditorUserService;
+import com.dhycostdb.entity.DesignContract;
+import com.dhycostdb.service.DesignContractService;
 
 @Controller
-@RequestMapping("editor")
-public class EditorUserController {
-    private final EditorUserService service;
+@RequestMapping("designcontract")
+public class DesignContractController {
+    private final DesignContractService service;
 
-    public EditorUserController(EditorUserService service) {
+    public DesignContractController(DesignContractService service) {
         this.service = service;
     }
 
@@ -25,23 +25,23 @@ public class EditorUserController {
     @GetMapping("/list")
     public String getList(Model model) {
         // 全件検索結果をModelに登録
-        model.addAttribute("list", service.getEditorUserList());
-        return "editor/list";
+        model.addAttribute("list", service.getDesignContractList());
+        return "designcontract/list";
     }
 
     /** 登録画面を表示 */
     @GetMapping("/add")
-    public String create(@ModelAttribute EditorUser user) {
-        return "editor/new";
+    public String create(@ModelAttribute DesignContract contract) {
+        return "designcontract/new";
     }
 
     /** 登録処理 */
     @PostMapping("/add")
-    public String add(@Validated EditorUser user, BindingResult res, Model model) {
+    public String add(@Validated DesignContract contract, BindingResult res, Model model) {
         // 登録
-        service.saveEditorUser(user);
+        service.saveDesignContract(contract);
         // 一覧画面にリダイレクト
-        return "redirect:/editor/list";
+        return "redirect:/designcontract/list";
     }
 
 }

@@ -14,8 +14,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "design_contracts")
-public class DesignContracts {
+@Table(name = "design_contract")
+public class DesignContract {
 
     // ID　（主キー自動生成）
     @Id
@@ -45,6 +45,6 @@ public class DesignContracts {
     // 編集者テーブルのエンティティとのリレーション実装
     @ManyToOne
     @JoinColumn(name = "dc_latest_editor", referencedColumnName = "euCode", nullable = false)
-    private EditorUsers editorUsers;
+    private EditorUser editorUser;
 
 }

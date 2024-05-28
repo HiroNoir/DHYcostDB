@@ -13,8 +13,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "editor_users")
-public class EditorUsers {
+@Table(name = "editor_user")
+public class EditorUser {
 
     // 主キー（社員番号）
     @Id
@@ -38,7 +38,7 @@ public class EditorUsers {
     private String password;
 
     // 設計契約テーブルのエンティティとのリレーション実装
-    @OneToMany(mappedBy = "editorUsers", cascade = CascadeType.ALL)
-    private List<DesignContracts> designContracts;
+    @OneToMany(mappedBy = "editorUser", cascade = CascadeType.ALL)
+    private List<DesignContract> designContract;
 
 }

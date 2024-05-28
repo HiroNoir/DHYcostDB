@@ -1,22 +1,31 @@
 package com.dhycostdb.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
-import com.dhycostdb.entity.EditorUsers;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dhycostdb.entity.EditorUser;
 import com.dhycostdb.repository.EditorUserRepository;
 
 @Service
 public class EditorUserService {
-    private final EditorUserRepository editorUsersRepository;
+    private final EditorUserRepository editorUserRepository;
 
     public EditorUserService(EditorUserRepository repository) {
-        this.editorUsersRepository = repository;
+        this.editorUserRepository = repository;
     }
 
     /** 全件を検索して返す */
-    public List<EditorUsers> getEditorUserList(){
+    public List<EditorUser> getEditorUserList(){
         // リポジトリのfindAllメソッドを呼び出す
-        return editorUsersRepository.findAll();
+        return editorUserRepository.findAll();
+    }
+
+    /** 登録を行う */
+    @Transactional
+    public EditorUser saveEditorUser(EditorUser user) {
+        return editorUserRepository.save(user);
     }
 
 }

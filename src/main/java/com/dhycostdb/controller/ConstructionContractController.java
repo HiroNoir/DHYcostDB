@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dhycostdb.entity.DesignContract;
-import com.dhycostdb.service.DesignContractService;
+import com.dhycostdb.entity.ConstructionContract;
+import com.dhycostdb.service.ConstructionContractService;
 
 @Controller
-@RequestMapping("designcontract")
-public class DesignContractController {
-    private final DesignContractService service;
+@RequestMapping("constructioncontract")
+public class ConstructionContractController {
+    private final ConstructionContractService service;
 
-    public DesignContractController(DesignContractService service) {
+    public ConstructionContractController(ConstructionContractService service) {
         this.service = service;
     }
 
@@ -25,23 +25,23 @@ public class DesignContractController {
     @GetMapping("/list")
     public String getList(Model model) {
         // 全件検索結果をModelに登録
-        model.addAttribute("list", service.getDesignContractList());
-        return "designcontract/list";
+        model.addAttribute("list", service.getConstructionContractList());
+        return "constructioncontract/list";
     }
 
     /** 登録画面を表示 */
     @GetMapping("/add")
-    public String create(@ModelAttribute DesignContract contract) {
-        return "designcontract/new";
+    public String create(@ModelAttribute ConstructionContract contract) {
+        return "constructioncontract/new";
     }
 
     /** 登録処理 */
     @PostMapping("/add")
-    public String add(@Validated DesignContract contract, BindingResult res, Model model) {
+    public String add(@Validated ConstructionContract contract, BindingResult res, Model model) {
         // 登録
-        service.saveDesignContract(contract);
+        service.saveConstructionContract(contract);
         // 一覧画面にリダイレクト
-        return "redirect:/designcontract/list";
+        return "redirect:/constructioncontract/list";
     }
 
 }

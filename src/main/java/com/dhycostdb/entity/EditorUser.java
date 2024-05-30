@@ -41,4 +41,8 @@ public class EditorUser {
     @OneToMany(mappedBy = "editorUser", cascade = CascadeType.ALL)
     private List<DesignContract> designContract;
 
+    // 工事契約テーブルのエンティティとのリレーション実装
+    @OneToMany(mappedBy = "editorUser", cascade = CascadeType.ALL)
+    private List<ConstructionContract> constructionContract;
+
 }

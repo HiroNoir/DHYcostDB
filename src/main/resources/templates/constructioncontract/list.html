@@ -10,49 +10,21 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">cc_id</th>
-                        <th scope="col">最終編集者</th>
-                        <th scope="col">登録日時</th>
-                        <th scope="col">更新日時</th>
-                        <th scope="col">業務番号</th>
-                        <th scope="col">内訳種別</th>
-                        <th scope="col">積算時期（年）</th>
-                        <th scope="col">積算時期（月）</th>
-                        <th scope="col">発注工期（期）</th>
-                        <th scope="col">工事名称</th>
-                        <th scope="col">工事場所</th>
-                        <th scope="col">敷地面積</th>
-                        <th scope="col">別途工事</th>
-                        <th scope="col">予定価格</th>
-                        <th scope="col">落札価格</th>
-                        <th scope="col">施工業者</th>
-                        <th scope="col">経緯等コメント</th>
-                        <th scope="col">発注図（抜粋）保存先</th>
+                        <th>業務番号</th>
+                        <th>発注工期（期）</th>
+                        <th>工事名称</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="var :${list}">
-                        <td th:text="${var.ccId}"></td>
-                        <td th:text="${var.editorUser.name}"></td>
-                        <td th:text="${#temporals.format(var.ccCreatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
-                        <td th:text="${#temporals.format(var.ccUpdatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
-                        <td th:text="${var.designContract.contractNumber}"></td>
-                        <td th:text="${var.estimateType.typeName}"></td>
-                        <td th:text="${var.estimateYear}"></td>
-                        <td th:text="${var.estimateMonth}"></td>
+                        <td><a th:href="@{/designcontract/listfromcc/{id}/(id=${var.designContract.dcId})}" th:text="${var.designContract.contractNumber}"></a></td>
                         <td th:text="${var.constructionPeriod}"></td>
                         <td th:text="${var.projectName}"></td>
-                        <td th:text="${var.siteAddress}"></td>
-                        <td th:text="${#numbers.formatDecimal(var.siteArea,3,'POINT',2,'COMMA')}"></td>
-                        <td th:text="${var.separeteConstruction}"></td>
-                        <td th:text="${#numbers.formatInteger(var.plannedPrice,3,'POINT')}"></td>
-                        <td th:text="${#numbers.formatInteger(var.contractPrice,3,'POINT')}"></td>
-                        <td th:text="${var.contractorName}"></td>
-                        <td th:text="${var.remarksSection}"></td>
-                        <td th:text="${var.blueprintAddress}"></td>
+                        <td class="align-middle"><a th:href="@{/constructioncontract/list/{id}/(id=${var.ccId})}" class="btn btn-primary">詳細</a></td>
                     </tr>
                 </tbody>
             </table>
+            <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
         </div>
     </body>
 </html>

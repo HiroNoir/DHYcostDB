@@ -23,9 +23,10 @@ public class EditorUserController {
 
     /** 一覧画面を表示 */
     @GetMapping("/list")
-    public String getList(Model model) {
-        // 全件検索結果をModelに登録
-        model.addAttribute("list", service.getEditorUserList());
+    public String list(Model model) {
+        // 全件検索結果をModelに登録（件数と内容）
+        model.addAttribute("listSize", service.findAll().size());
+        model.addAttribute("list", service.findAll());
         return "editor/list";
     }
 

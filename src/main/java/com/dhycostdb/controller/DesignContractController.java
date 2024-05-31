@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,10 +24,27 @@ public class DesignContractController {
 
     /** 一覧画面を表示 */
     @GetMapping("/list")
-    public String getList(Model model) {
-        // 全件検索結果をModelに登録
-        model.addAttribute("list", service.getDesignContractList());
+    public String list(Model model) {
+        // 全件検索結果をModelに登録（件数と内容）
+        model.addAttribute("listSize", service.findAll().size());
+        model.addAttribute("list", service.findAll());
         return "designcontract/list";
+    }
+
+    /** 詳細画面を表示（設計契約画面より遷移） */
+    @GetMapping(value = "/list/{id}/")
+    public String detail(@PathVariable Integer id, Model model) {
+        // 一件検索した結果をModelに登録
+        model.addAttribute("designcontract", service.findByDcId(id));
+        return "designcontract/detail";
+    }
+
+    /** 詳細画面を表示（工事契約画面より遷移） */
+    @GetMapping(value = "/listfromcc/{id}/")
+    public String detailFormCc(@PathVariable Integer id, Model model) {
+        // 一件検索した結果をModelに登録
+        model.addAttribute("designcontract", service.findByDcId(id));
+        return "designcontract/detailfromcc";
     }
 
     /** 登録画面を表示 */

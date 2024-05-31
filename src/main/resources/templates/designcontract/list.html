@@ -10,10 +10,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">dc_id</th>
-                        <th scope="col">最終編集者</th>
-                        <th scope="col">登録日時</th>
-                        <th scope="col">更新日時</th>
                         <th scope="col">業務番号</th>
                         <th scope="col">業務名称</th>
                         <th scope="col">顧客名称</th>
@@ -21,16 +17,14 @@
                 </thead>
                 <tbody>
                     <tr th:each="var :${list}">
-                        <td th:text="${var.dcId}"></td>
-                        <td th:text="${var.editorUser.name}"></td>
-                        <td th:text="${#temporals.format(var.dcCreatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
-                        <td th:text="${#temporals.format(var.dcUpdatedAt, 'yyyy-MM-dd hh:mm:ss')}"></td>
                         <td th:text="${var.contractNumber}"></td>
                         <td th:text="${var.contractName}"></td>
                         <td th:text="${var.customerName}"></td>
+                        <td class="align-middle"><a th:href="@{/designcontract/list/{id}/(id=${var.dcId})}" class="btn btn-primary">編集情報</a></td>
                     </tr>
                 </tbody>
             </table>
+            <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
         </div>
     </body>
 </html>

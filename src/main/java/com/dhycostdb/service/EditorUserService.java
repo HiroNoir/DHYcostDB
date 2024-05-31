@@ -17,7 +17,7 @@ public class EditorUserService {
     }
 
     /** 全件を検索して返す */
-    public List<EditorUser> getEditorUserList(){
+    public List<EditorUser> findAll(){
         // リポジトリのfindAllメソッドを呼び出す
         return editorUserRepository.findAll();
     }

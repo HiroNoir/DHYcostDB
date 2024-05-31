@@ -5,26 +5,75 @@
         <style> * { outline: 1px solid #f00; }</style> -->
     </head>
     <body>
-        <div class="container">
-            <h1 class="text-center mb-5">工事契約一覧</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>業務番号</th>
-                        <th>発注工期（期）</th>
-                        <th>工事名称</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="var :${list}">
-                        <td><a th:href="@{/designcontract/listfromcc/{id}/(id=${var.designContract.dcId})}" th:text="${var.designContract.contractNumber}"></a></td>
-                        <td th:text="${var.constructionPeriod}"></td>
-                        <td th:text="${var.projectName}"></td>
-                        <td class="align-middle"><a th:href="@{/constructioncontract/list/{id}/(id=${var.ccId})}" class="btn btn-primary">詳細</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
+        <!-- ヘッダー -->
+        <header class="py-4">
+        <div class="container text-center">
+            <h1><a class="link-dark link-offset-2 link-underline link-underline-opacity-0" th:href="@{/constructioncontract/list}" th:text="DHYcostDB"></a></h1>
         </div>
+        </header>
+        <!-- /ヘッダー -->
+        <!-- ナビゲーションバー -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
+            <!-- サブコンポーネント -->
+            <div class="container">
+                <!-- ブランド -->
+                <a class="navbar-brand" th:href="@{/constructioncontract/list}" th:text="DHYcostDB"></a>
+                <!-- /ブランド -->
+                <!-- ナビゲーション -->
+                <div class="collapse navbar-collapse" id="navbar-content">
+                    <!-- ナビゲーションメニュー -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/designcontract/list}" th:text="設計契約一覧"></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/constructioncontract/list}" th:text="工事契約一覧"></a>
+                        </li>
+                    </ul>
+                    <!-- /ナビゲーションメニュー -->
+                </div>
+                <!-- /ナビゲーション -->
+            </div>
+            <!-- /サブコンポーネント -->
+        </nav>
+        <!-- /ナビゲーションバー -->
+        <!-- メイン -->
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-center mb-5">工事契約一覧</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>業務番号</th>
+                                    <th>発注工期（期）</th>
+                                    <th>工事名称</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="var :${list}">
+                                    <td><a th:href="@{/designcontract/listfromcc/{id}/(id=${var.designContract.dcId})}" th:text="${var.designContract.contractNumber}"></a></td>
+                                    <td th:text="${var.constructionPeriod}"></td>
+                                    <td th:text="${var.projectName}"></td>
+                                    <td class="align-middle"><a th:href="@{/constructioncontract/list/{id}/(id=${var.ccId})}" class="btn btn-primary">詳細</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- /メイン -->
     </body>
 </html>

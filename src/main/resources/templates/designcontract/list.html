@@ -6,25 +6,38 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center mb-5">設計契約一覧</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">業務番号</th>
-                        <th scope="col">業務名称</th>
-                        <th scope="col">顧客名称</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="var :${list}">
-                        <td th:text="${var.contractNumber}"></td>
-                        <td th:text="${var.contractName}"></td>
-                        <td th:text="${var.customerName}"></td>
-                        <td class="align-middle"><a th:href="@{/designcontract/list/{id}/(id=${var.dcId})}" class="btn btn-primary">編集情報</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center mb-5">設計契約一覧</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>業務番号</th>
+                                <th>業務名称</th>
+                                <th>顧客名称</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="var :${list}">
+                                <td th:text="${var.contractNumber}"></td>
+                                <td th:text="${var.contractName}"></td>
+                                <td th:text="${var.customerName}"></td>
+                                <td class="align-middle"><a th:href="@{/designcontract/list/{id}/(id=${var.dcId})}" class="btn btn-primary">編集情報</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
+                </div>
+            </div>
         </div>
     </body>
 </html>

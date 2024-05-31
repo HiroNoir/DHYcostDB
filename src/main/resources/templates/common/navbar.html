@@ -1,0 +1,34 @@
+<nav th:fragment="navbar">
+<!-- ヘッダー -->
+<header class="py-4">
+<div class="container text-center">
+    <h1><a class="link-dark link-offset-2 link-underline link-underline-opacity-0" th:href="@{/constructioncontract/list}" th:text="DHYcostDB"></a></h1>
+</div>
+</header>
+<!-- /ヘッダー -->
+<!-- ナビゲーションバー -->
+<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
+    <!-- サブコンポーネント -->
+    <div class="container">
+        <!-- ブランド -->
+        <a class="navbar-brand" th:href="@{/constructioncontract/list}" th:text="DHYcostDB"></a>
+        <!-- /ブランド -->
+        <!-- ナビゲーション -->
+        <div class="collapse navbar-collapse" id="navbar-content">
+            <!-- ナビゲーションメニュー -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/designcontract/list}" th:text="設計契約一覧"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/constructioncontract/list}" th:text="工事契約一覧（ホーム）"></a>
+                </li>
+            </ul>
+            <!-- /ナビゲーションメニュー -->
+        </div>
+        <!-- /ナビゲーション -->
+    </div>
+    <!-- /サブコンポーネント -->
+</nav>
+<!-- /ナビゲーションバー -->
+</nav>

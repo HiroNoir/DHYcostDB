@@ -5,35 +5,42 @@
         <style> * { outline: 1px solid #f00; }</style> -->
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center mb-5">設計契約情報</h1>
+        <!-- navbar -->
+        <nav th:replace="~{common/navbar :: navbar}"></nav>
+        <!-- /navbar -->
+        <!-- メイン -->
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-center mb-5">設計契約情報</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>業務番号</th>
+                                <td th:text="${designcontract.contractNumber}"></td>
+                            </tr>
+                            <tr>
+                                <th>業務名称</th>
+                                <td th:text="${designcontract.contractName}"></td>
+                            </tr>
+                            <tr>
+                                <th>顧客名称</th>
+                                <td th:text="${designcontract.customerName}"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a th:href="@{/constructioncontract/list}" class="btn btn-primary">戻る</a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <table class="table table-striped">
-                        <tr>
-                            <th>業務番号</th>
-                            <td th:text="${designcontract.contractNumber}"></td>
-                        </tr>
-                        <tr>
-                            <th>業務名称</th>
-                            <td th:text="${designcontract.contractName}"></td>
-                        </tr>
-                        <tr>
-                            <th>顧客名称</th>
-                            <td th:text="${designcontract.customerName}"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a th:href="@{/constructioncontract/list}" class="btn btn-primary">戻る</a>
-                </div>
-            </div>
-        </div>
+        </main>
+        <!-- /メイン -->
     </body>
 </html>
